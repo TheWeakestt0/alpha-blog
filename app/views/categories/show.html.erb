@@ -1,10 +1,17 @@
 <div class="row">
   <div class="col-sm-10 col-sm-offset-1">
-    <h1><%= "Category: " + @category.name %></h1>
+    <h1 align="center"><%= "Category: " + @category.name %></h1>
   </div>
 </div>
 
+
+
 <div class="center">
+  <% if logged_in? and current_user.admin? %>
+    <div class="row">
+      <span class = "badge"> <%= link_to "Edit Category", edit_category_path(@category) %></span>
+    </div>
+  <% end %>
   <%= will_paginate @category_articles%>
 </div>
 
